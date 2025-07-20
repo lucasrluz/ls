@@ -1,8 +1,20 @@
 #include <stdio.h>
 #include <dirent.h>
 
-int main() {
-	DIR *directory_stream = opendir(".");
+void ls(char *dirname);
+
+int main(int argc, char *argv[]) {
+	char *dirname = ".";
+
+	if (argc > 1) {
+		dirname = argv[1];
+	}
+
+	ls(dirname);	
+}
+
+void ls(char *dirname) {
+	DIR *directory_stream = opendir(dirname);
 
 	struct dirent *directory;
 
